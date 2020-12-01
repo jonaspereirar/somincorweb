@@ -1,8 +1,11 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { FiLogIn, FiMail } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+
+import { signInRequest } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/LogoSignIn.svg';
 
@@ -12,11 +15,16 @@ const schema = Yup.object().shape({
 });
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+
+  function handleSubmit({ number, password }) {
+    dispatch(signInRequest(number, password));
+  }
   return (
     <>
       <img src={logo} alt="SomincorApp" />
 
-      <Form schema={schema} onSubmit>
+      <Form schema={schema} onSubmit={handleSubmit}>
         <h1>Faça seu login</h1>
         <Input name="number" type="number" placeholder="Digite seu nº" />
         <Input name="password" type="password" placeholder="Digite sua senha" />
