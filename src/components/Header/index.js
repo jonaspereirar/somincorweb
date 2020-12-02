@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import Notices from '~/components/Notices';
+
 import logo from '~/assets/headerLogo.png';
 import foto from '~/assets/FotoMinera.png';
 
@@ -17,7 +19,10 @@ export default function Header() {
           <img src={logo} alt="SomincorApp" />
           <Link to="/dashboard">DASHBOARD</Link>
         </nav>
+
         <aside>
+          <Notices />
+
           <Profile>
             <div>
               <strong>{profile.name}</strong>
