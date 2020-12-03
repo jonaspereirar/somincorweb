@@ -11,8 +11,10 @@ export function* updateProfile({ payload }) {
       name,
       number,
       email,
-      direction,
-      area,
+      // eslint-disable-next-line camelcase
+      direction_id,
+      // eslint-disable-next-line camelcase
+      area_id,
       // eslint-disable-next-line camelcase
       avatar_id,
       ...rest
@@ -22,8 +24,8 @@ export function* updateProfile({ payload }) {
       name,
       number,
       email,
-      direction,
-      area,
+      direction_id,
+      area_id,
       avatar_id,
 
       ...(rest.oldPassword ? rest : {}),

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Notices from '~/components/Notices';
 
 import logo from '~/assets/headerLogo.png';
-import foto from '~/assets/perfil.png';
+// import foto from '~/assets/perfil.png';
 
 import { Container, Profile, Content } from './styles';
 
@@ -31,7 +31,11 @@ export default function Header() {
             </div>
             <Link to="/profile">
               <img
-                src={profile.avatar.url || <img src={foto} alt="SomincorApp" />}
+                src={
+                  profile.avatar !== null
+                    ? profile.avatar.url
+                    : 'https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png'
+                }
                 alt="profile"
               />
             </Link>

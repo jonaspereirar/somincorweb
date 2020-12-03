@@ -28,10 +28,13 @@ export default function Profile() {
         <Input name="number" placeholder="Número de funcionário" />
         <Input name="email" placeholder="Seu endereço de E-mail" />
         <Input
-          name="direction"
+          name="direction_id"
           placeholder="Sua Direção, Ex.: Produção ou Manutenção"
         />
-        <Input name="area" placeholder="Sua Área, Ex.: Elétrica ou BackFill" />
+        <Input
+          name="area_id"
+          placeholder="Sua Área, Ex.: Elétrica ou BackFill"
+        />
 
         <hr />
 

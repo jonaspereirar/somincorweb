@@ -4,7 +4,7 @@ import api from '~/services/api';
 
 import { Content } from './styles';
 
-import foto from '~/assets/perfil.png';
+// import foto from '~/assets/perfil.png';
 
 export default function AvatarInput() {
   const { defaultValue, registerField } = useField('avatar');
@@ -38,7 +38,14 @@ export default function AvatarInput() {
   return (
     <Content>
       <label htmlFor="avatar">
-        <img src={preview || <img src={foto} alt="SomincorApp" />} alt="" />
+        <img
+          src={
+            preview !== null
+              ? preview
+              : 'https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png'
+          }
+          alt="profile"
+        />
 
         <input
           type="file"
