@@ -46,8 +46,11 @@ export const Profile = styled.div`
     margin-right: 10px;
 
     strong {
+    text-decoration: none
+      margin-top: 8px;
       display: block;
       color: #333;
+      font-size: 19px;
     }
 
     a {
@@ -58,8 +61,9 @@ export const Profile = styled.div`
     }
   }
   img {
-    width: 32px;
-    height: 32px;
+    margin-top: 8px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
   }
 `;

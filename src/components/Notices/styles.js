@@ -11,6 +11,7 @@ export const Badge = styled.button`
   background: none;
   border: 0;
   position: relative;
+  margin-right: 20px;
 
   ${(props) =>
     props.hasUnread &&
@@ -82,7 +83,7 @@ export const Notice = styled.div`
     font-size: 12px;
     border: 0;
     background: none;
-    color: ${lighten(0.2, '#7159c1')};
+    color: ${lighten(1, '#7159c1')};
   }
 
   ${(props) =>

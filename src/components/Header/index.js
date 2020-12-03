@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Notices from '~/components/Notices';
 
 import logo from '~/assets/headerLogo.png';
-import foto from '~/assets/FotoMinera.png';
+import foto from '~/assets/perfil.png';
 
 import { Container, Profile, Content } from './styles';
 
@@ -25,19 +25,16 @@ export default function Header() {
 
           <Profile>
             <div>
-              <strong>{profile.name}</strong>
-              <Link to="/profile">Meu Perfil</Link>
+              <Link to="/profile">
+                <strong>{profile.name}</strong>
+              </Link>
             </div>
-            <img
-              src={
-                profile.avatar !== null ? (
-                  profile.avatar.url
-                ) : (
-                  <img src={foto} alt="SomincorApp" />
-                )
-              }
-              alt="profile"
-            />
+            <Link to="/profile">
+              <img
+                src={profile.avatar.url || <img src={foto} alt="SomincorApp" />}
+                alt="profile"
+              />
+            </Link>
           </Profile>
         </aside>
       </Content>
