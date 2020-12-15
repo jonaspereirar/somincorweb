@@ -5,13 +5,13 @@ import { lighten } from 'polished';
 
 export const Container = styled.div`
   position: relative;
+  margin-right: 150px;
 `;
 
 export const Badge = styled.button`
   background: none;
   border: 0;
   position: relative;
-  margin-right: 20px;
 
   ${(props) =>
     props.hasUnread &&

@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 
 import { signInRequest } from '../../store/modules/auth/actions';
 
-import logo from '~/assets/LogoSignIn.svg';
+import logo from '~/assets/LogoSignIn2.svg';
 
 const schema = Yup.object().shape({
   number: Yup.string().required('É necessário seu número'),

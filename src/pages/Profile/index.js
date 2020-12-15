@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
+import { Link } from 'react-router-dom';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
@@ -22,6 +24,12 @@ export default function Profile() {
   }
   return (
     <Container>
+      <span>
+        <Link to="/dashboard">
+          <AiOutlineArrowLeft />
+          DASHBOARD
+        </Link>
+      </span>
       <Form initialData={profile} onSubmit={handleSubmit}>
         <AvatarInput name="avatar_id" />
         <Input name="name" placeholder="Nome completo" />

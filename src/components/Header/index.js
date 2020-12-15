@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import Notices from '~/components/Notices';
 
-import logo from '~/assets/headerLogo.png';
-// import foto from '~/assets/perfil.png';
+import logo from '~/assets/LogoSignIn2.svg';
+// import logo from '~/assets/headerLogo.png';
 
 import { Container, Profile, Content } from './styles';
 
@@ -17,7 +17,6 @@ export default function Header() {
       <Content>
         <nav>
           <img src={logo} alt="SomincorApp" />
-          <Link to="/dashboard">DASHBOARD</Link>
         </nav>
 
         <aside>

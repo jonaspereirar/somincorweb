@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 230.69131 191.29022" xmlns="http://www.w3.org/2000/svg">
+ <path d="m86.2 177.96s4.7551-9.18 7.4638-13.046c2.6311-3.7556 6.3383-8.7836 9.808-11.782 6.3533-5.4898 15.056-12.538 21.59-17.811 3.0502-2.4618 6.4047-7.3619 10.255-8.0961 1.6606-0.31664 3.826 0.99602 5.3974 1.6192 2.356 0.93432 5.064 4.2384 7.5564 3.7782 5.1842-0.95729 7.4558-9.848 12.684-10.525 2.6726-0.34603 4.6485 0.73771 6.7468 2.4288 1.0698 0.86219 1.9523 2.7552 3.2384 3.2384 2.2787 0.85619 5.7596-1.2223 8.0961-0.53974 3.6682 1.0716 7.5859 4.8215 10.255 7.5564 1.3805 1.4145 2.0526 4.4335 3.7782 5.3974 2.4073 1.3447 7.1601-1.3061 9.1756 0.53974 7.6035 6.9636 12.932 13.037 16.192 23.209 1.3444 4.1942 4.3179 14.033 4.3179 14.033h-136.55z" fill="#11111a" fill-rule="evenodd" stroke="#000" stroke-width="2"/>
+ <path d="m132.94 185.1-24.031-35.043 14.322-11.775 26.884 41.666-17.174 5.1523z" fill="#feffff" fill-opacity=".59502" fill-rule="evenodd"/>
+ <path d="m2 175.26h226.69v14.033h-226.69z" fill-rule="evenodd" stroke="#000" stroke-width="4"/>
+ <path d="m23.05 19.811h62.07v15.652h-62.07z" fill-rule="evenodd" stroke="#000" stroke-width="4"/>
+ <path d="m18.732 68.388h72.325v4.8577h-72.325z" fill-rule="evenodd" stroke="#000" stroke-width="4"/>
+ <path d="m29.527 101.85h49.116" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m29.527 137.48h49.116" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m30.126 175.1 46.957-36.702" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m32.226 138.01 46.957-36.702" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m30.705 100.71 50.736-29.686" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m31.146 180.11v-152.21" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m77.024 180.11v-152.21" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m35.464 26.288v-24.288" fill="none" stroke="#000" stroke-width="4"/>
+ <path transform="matrix(2 0 0 2 -15.141 -19.531)" d="m36.448 44.875a2.4808 2.6716 0 1 1 -4.9615 0 2.4808 2.6716 0 1 1 4.9615 0z" fill-rule="evenodd" stroke="#000" stroke-width="2"/>
+ <path transform="matrix(2 0 0 2 -17.431 -21.057)" d="m46.562 46.688a11.163 11.163 0 1 1 -22.327 0 11.163 11.163 0 1 1 22.327 0z" fill="none" stroke="#000" stroke-width="2"/>
+ <path d="m86.57 112.77v-32.822" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m102.79 138.92v-32.822" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m87.143 115.64 15.648-11.45" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m103.55 141.59 15.648-11.45" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m124.93 176.32-58.775-94.65" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m146.13 175.39-63.777-102.71" fill="none" stroke="#000" stroke-width="4.3404"/>
+ <path d="m118.44 163.72v-32.822" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m132.56 186.62v-32.822" fill="none" stroke="#000" stroke-width="4"/>
+ <path d="m118.06 165.63 15.648-11.45" fill="none" stroke="#000" stroke-width="4"/>
+</svg>

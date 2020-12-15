@@ -1,86 +1,280 @@
-import React from 'react';
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+import { isToday, format, parseISO, isAfter } from 'date-fns';
+
+import { pt } from 'date-fns/locale';
+import DayPicker, { DayModifiers } from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
+
 import { FiClock } from 'react-icons/fi';
+import { AiOutlineCamera } from 'react-icons/ai';
+
+import api from '~/services/api';
 
 import {
   Container,
   Content,
   Schedule,
-  NextOrden,
+  NextOrder,
   Section,
-  Orden,
-  Calendar,
+  Order,
+  Calender,
 } from './styles';
 
 export default function Dashboard() {
+  const user = useSelector((state) => state.user.profile);
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [orders, setOrders] = useState([]);
+
+  const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
+    if (modifiers.available) {
+      setSelectedDate(day);
+    }
+  }, []);
+
+  const handleMonthChange = useCallback((month: Date) => {
+    setCurrentMonth(month);
+  }, []);
+
+  useEffect(() => {
+    api
+      .get(`/providers/${user.id}/month-availability`, {
+        params: {
+          year: currentMonth.getFullYear(),
+          month: currentMonth.getMonth() + 1,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      });
+  }, [currentMonth, user.id]);
+
+  useEffect(() => {
+    async function loadOrder() {
+      const response = await api.get('/orders/me', {
+        params: {
+          year: selectedDate.getFullYear(),
+          month: selectedDate.getMonth() + 1,
+          day: selectedDate.getDate(),
+        },
+      });
+      console.tron.log(response.data);
+      const data = response.data.map((order) => {
+        return {
+          ...order,
+          hourFormatted: format(parseISO(order.date), 'HH:mm'),
+        };
+      });
+
+      setOrders(data);
+    }
+    loadOrder();
+  }, [selectedDate]);
+
+  const selectedDateAsText = useMemo(() => {
+    return format(selectedDate, "'Dia' dd 'de' MMMM", {
+      locale: pt,
+    });
+  }, [selectedDate]);
+
+  const selectedWeekDay = useMemo(() => {
+    return format(selectedDate, 'cccc', {
+      locale: pt,
+    });
+  }, [selectedDate]);
+
+  const morningOrders = useMemo(() => {
+    return orders.filter((order) => {
+      return parseISO(order.date).getHours() < 19;
+    });
+  }, [orders]);
+
+  const afternoonOrders = useMemo(() => {
+    return orders.filter((order) => {
+      return parseISO(order.date).getHours() >= 19;
+    });
+  }, [orders]);
+
+  const nextOrder = useMemo(() => {
+    return orders.find((order) => isAfter(parseISO(order.date), new Date()));
+  }, [orders]);
+
   return (
     <Container>
       <Content>
+        <Calender>
+          <DayPicker
+            weekdaysShort={['D', 'S', 'T', 'Q', 'Q', 'S', 'S']}
+            fromMonth={new Date()}
+            disabledDays={[{ daysOfWeek: [0, 6] }]}
+            modifiers={{
+              available: { daysOfWeek: [0, 1, 2, 3, 4, 5, 6] },
+            }}
+            onMonthChange={handleMonthChange}
+            selectedDays={selectedDate}
+            onDayClick={handleDateChange}
+            months={[
+              'Janeiro',
+              'Fevereiro',
+              'Março',
+              'Abril',
+              'Maio',
+              'Junho',
+              'Julho',
+              'Agosto',
+              'Setembro',
+              'Outubro',
+              'Novembro',
+              'Dezembro',
+            ]}
+          />
+        </Calender>
         <Schedule>
-          <h1>Horários agendados</h1>
+          <h1>Pedidos agendados</h1>
           <p>
-            <span>Hoje</span>
-            <span>Dia 06</span>
-            <span>Segunda-feira</span>
+            {isToday(selectedDate) && <span>Hoje</span>}
+            <span>{selectedDateAsText}</span>
+            <span>{selectedWeekDay}</span>
           </p>
 
-          <NextOrden>
-            <strong>Pedido a seguir</strong>
-            <div>
-              <img
-                src="https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png"
-                alt="Jonas Rodrigues"
-              />
-              <strong>Jonas Rodrigues</strong>
-              <span>
-                <FiClock />
-                08:00
-              </span>
-            </div>
-          </NextOrden>
+          {isToday(selectedDate) && nextOrder && (
+            <NextOrder>
+              <div>
+                <img src={nextOrder.user.avatar.url} alt="" />
+                <strong>Jonas</strong>
+                <strong>Jonas</strong>
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Verificar cabo danificado</td>
+                      <span>
+                        <AiOutlineCamera />
+                      </span>
+                      <td />
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Local:</td>
+                      <td>Zambujal</td>
+                    </tr>
+                    <tr>
+                      <td>Frente:</td>
+                      <td>LSGRAM 01</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <span>
+                  <FiClock />
+                  08:00
+                </span>
+              </div>
+            </NextOrder>
+          )}
+
           <Section>
-            <strong>Pedidos agendados</strong>
-            <Orden>
-              <span>
-                <FiClock />
-                08:00
-              </span>
-              <div>
-                <img
-                  src="https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png"
-                  alt="Jonas Rodrigues"
-                />
-                <strong>Jonas Rodrigues</strong>
-              </div>
-            </Orden>
-            <Orden>
-              <span>
-                <FiClock />
-                08:00
-              </span>
-              <div>
-                <img
-                  src="https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png"
-                  alt="Jonas Rodrigues"
-                />
-                <strong>Jonas Rodrigues</strong>
-              </div>
-            </Orden>
-            <Orden>
-              <span>
-                <FiClock />
-                08:00
-              </span>
-              <div>
-                <img
-                  src="https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331_960_720.png"
-                  alt="Jonas Rodrigues"
-                />
-                <strong>Jonas Rodrigues</strong>
-              </div>
-            </Orden>
+            <strong>Turno Manhã</strong>
+
+            {morningOrders.map((order) => (
+              <Order key={order.id}>
+                <span>
+                  <FiClock />
+                  08:00
+                </span>
+                <div>
+                  <img src={order.user.vatar.url} alt={order.user.name} />
+                  <strong>
+                    Jonas
+                    <td>Nº 2613</td>
+                  </strong>
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Verificar cabo danificado</td>
+                        <span>
+                          <AiOutlineCamera />
+                        </span>
+                        <p />
+                        <td>Descrição: </td>
+                        <p />
+                        <p />
+                        <p />
+                        <li>
+                          Cabo apresenta desgaste na proteção e ficha danificada
+                        </li>
+                        <td />
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Local:</td>
+                        <td>Zambujal</td>
+                      </tr>
+                      <tr>
+                        <td>Frente:</td>
+                        <td>LSGRAM 01</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </Order>
+            ))}
+          </Section>
+
+          <Section>
+            <strong>Turno Tarde</strong>
+
+            {afternoonOrders.map((order) => (
+              <Order key={order.id}>
+                <span>
+                  <FiClock />
+                  08:00
+                </span>
+                <div>
+                  <img src={order.user.vatar.url} alt={order.user.name} />
+                  <strong>
+                    Jonas
+                    <td>Nº 2613</td>
+                  </strong>
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Verificar cabo danificado</td>
+                        <span>
+                          <AiOutlineCamera />
+                        </span>
+                        <p />
+                        <td>Descrição: </td>
+                        <p />
+                        <p />
+                        <p />
+                        <li>
+                          Cabo apresenta desgaste na proteção e ficha danificada
+                        </li>
+                        <td />
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Local:</td>
+                        <td>Zambujal</td>
+                      </tr>
+                      <tr>
+                        <td>Frente:</td>
+                        <td>LSGRAM 01</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </Order>
+            ))}
           </Section>
         </Schedule>
-        <Calendar />
       </Content>
     </Container>
   );

@@ -1,7 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
-import signInBackground from '../../../assets/sign-in-background.jpg';
+// import signInBackground from '../../../assets/sign-in-background.jpg';
+import signInBackground from '../../../assets/miners.jpg';
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -28,14 +29,14 @@ export const Content = styled.div`
   max-width: 700px;
 `;
 
-const appearFromLeft = keyframes`
+const appearFromRight = keyframes`
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(50px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0px);
   }
 `;
 
@@ -45,7 +46,7 @@ export const AnimationContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  animation: ${appearFromLeft} 3s;
+  animation: ${appearFromRight} 3s;
 
   form {
     display: flex;

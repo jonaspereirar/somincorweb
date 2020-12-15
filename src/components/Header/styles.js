@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 64px;
+  height: 110px;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
@@ -16,16 +16,15 @@ export const Content = styled.div`
   nav {
     display: flex;
     align-items: center;
+    width: 100px;
+    height: 100px;
 
     img {
       margin-right: 20px;
       padding-right: 20px;
-      border-right: 1px solid #eee;
-    }
-
-    a {
-      font-weight: bold;
-      color: #7159c1;
+      border-right: 2px solid #eee;
+      width: 100px;
+      height: 100px;
     }
   }
 
@@ -39,7 +38,7 @@ export const Profile = styled.div`
   display: flex;
   margin-left: 20px;
   padding-left: 20px;
-  border-left: 1px solid #eee;
+  border-left: 2px solid #eee;
 
   div {
     text-align: right;
@@ -56,14 +55,14 @@ export const Profile = styled.div`
     a {
       display: back;
       margin-top: 2px;
-      font-size: 12px;
+      font-size: 10px;
       color: #999;
     }
   }
   img {
     margin-top: 8px;
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
   }
 `;

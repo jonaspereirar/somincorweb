@@ -6,6 +6,14 @@ export const Container = styled.div`
   margin: 25px auto;
   align-items: center;
 
+  span {
+    font-weight: bold;
+    font-size: 20px;
+    color: #7159;
+    position: fixed;
+    margin-left: 550px;
+  }
+
   form {
     display: flex;
     flex-direction: column;

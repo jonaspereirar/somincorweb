@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
-import logo from '~/assets/LogoSignIn.svg';
+import logo from '~/assets/LogoSignIn2.svg';
 
 import { signUpRequest } from '~/store/modules/auth/actions';
+
+import { Container, Content, AnimationContainer, Background } from './styles';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('É necessário digitar seu nome'),
@@ -29,25 +31,37 @@ export default function SignUp() {
 
   return (
     <>
-      <img src={logo} alt="SomincorApp" />
+      <Container>
+        <Background />
 
-      <Form schema={schema} onSubmit={handleSubmit}>
-        <h1>Faça seu Registo</h1>
-        <Input name="name" type="name" placeholder="Nome Completo" />
-        <Input
-          name="number"
-          type="number"
-          placeholder="Digite seu nº de colaborador"
-        />
-        <Input name="email" type="email" placeholder="Digite seu e-mail" />
-        <Input name="password" type="password" placeholder="Sua senha" />
+        <Content>
+          <AnimationContainer>
+            <img src={logo} alt="SomincorApp" />
 
-        <button type="submit">Criar conta</button>
-        <Link to="/">
-          <FiArrowLeft />
-          Voltar
-        </Link>
-      </Form>
+            <Form schema={schema} onSubmit={handleSubmit}>
+              <h1>Faça seu Registo</h1>
+              <Input name="name" type="name" placeholder="Nome Completo" />
+              <Input
+                name="number"
+                type="number"
+                placeholder="Digite seu nº de colaborador"
+              />
+              <Input
+                name="email"
+                type="email"
+                placeholder="Digite seu e-mail"
+              />
+              <Input name="password" type="password" placeholder="Sua senha" />
+
+              <button type="submit">Criar conta</button>
+              <Link to="/">
+                <FiArrowLeft />
+                Voltar
+              </Link>
+            </Form>
+          </AnimationContainer>
+        </Content>
+      </Container>
     </>
   );
 }
