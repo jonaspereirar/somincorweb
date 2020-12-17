@@ -54,7 +54,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadOrder() {
-      const response = await api.get('/orders/me', {
+      const response = await api.get('orders/me', {
         params: {
           year: selectedDate.getFullYear(),
           month: selectedDate.getMonth() + 1,
@@ -62,7 +62,7 @@ export default function Dashboard() {
         },
       });
       console.tron.log(response.data);
-      const data = response.data.map((order) => {
+      const data = response.data.orders.map((order) => {
         return {
           ...order,
           hourFormatted: format(parseISO(order.date), 'HH:mm'),
@@ -88,13 +88,13 @@ export default function Dashboard() {
 
   const morningOrders = useMemo(() => {
     return orders.filter((order) => {
-      return parseISO(order.date).getHours() < 19;
+      return parseISO(order.date).getHours() < 12;
     });
   }, [orders]);
 
   const afternoonOrders = useMemo(() => {
     return orders.filter((order) => {
-      return parseISO(order.date).getHours() >= 19;
+      return parseISO(order.date).getHours() >= 12;
     });
   }, [orders]);
 
@@ -140,36 +140,39 @@ export default function Dashboard() {
             <span>{selectedWeekDay}</span>
           </p>
 
+          <strong>Próximo Pedido</strong>
           {isToday(selectedDate) && nextOrder && (
             <NextOrder>
               <div>
-                <img src={nextOrder.user.avatar.url} alt="" />
-                <strong>Jonas</strong>
-                <strong>Jonas</strong>
+                <img
+                  src={nextOrder.user.avatar.url}
+                  alt={nextOrder.user.name}
+                />
+                <strong>{nextOrder.user.name}</strong>
+                <span>
+                  <AiOutlineCamera />
+                </span>
                 <table>
                   <thead>
                     <tr>
-                      <td>Verificar cabo danificado</td>
-                      <span>
-                        <AiOutlineCamera />
-                      </span>
+                      <td>{nextOrder.title}</td>
                       <td />
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>Local:</td>
-                      <td>Zambujal</td>
+                      <td>{nextOrder.location.name}</td>
                     </tr>
                     <tr>
                       <td>Frente:</td>
-                      <td>LSGRAM 01</td>
+                      <td>{nextOrder.front}</td>
                     </tr>
                   </tbody>
                 </table>
                 <span>
                   <FiClock />
-                  08:00
+                  {nextOrder.hourFormatted}
                 </span>
               </div>
             </NextOrder>
@@ -182,19 +185,19 @@ export default function Dashboard() {
               <Order key={order.id}>
                 <span>
                   <FiClock />
-                  08:00
+                  {order.hourFormatted}
                 </span>
                 <div>
-                  <img src={order.user.vatar.url} alt={order.user.name} />
+                  <img src={order.user.avatar.url} alt={order.user.name} />
                   <strong>
-                    Jonas
-                    <td>Nº 2613</td>
+                    {order.user.name}
+                    <td>Nº {order.user.number}</td>
                   </strong>
 
                   <table>
                     <thead>
                       <tr>
-                        <td>Verificar cabo danificado</td>
+                        <td>{order.title}</td>
                         <span>
                           <AiOutlineCamera />
                         </span>
@@ -203,20 +206,18 @@ export default function Dashboard() {
                         <p />
                         <p />
                         <p />
-                        <li>
-                          Cabo apresenta desgaste na proteção e ficha danificada
-                        </li>
+                        <li>{order.description}</li>
                         <td />
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>Local:</td>
-                        <td>Zambujal</td>
+                        <td>{order.location.name}</td>
                       </tr>
                       <tr>
                         <td>Frente:</td>
-                        <td>LSGRAM 01</td>
+                        <td>{order.front}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -232,13 +233,13 @@ export default function Dashboard() {
               <Order key={order.id}>
                 <span>
                   <FiClock />
-                  08:00
+                  {order.hourFormatted}
                 </span>
                 <div>
-                  <img src={order.user.vatar.url} alt={order.user.name} />
+                  <img src={order.user.avatar.url} alt={order.user.name} />
                   <strong>
-                    Jonas
-                    <td>Nº 2613</td>
+                    {order.user.name}
+                    <td>Nº {order.user.number}</td>
                   </strong>
 
                   <table>
@@ -253,20 +254,18 @@ export default function Dashboard() {
                         <p />
                         <p />
                         <p />
-                        <li>
-                          Cabo apresenta desgaste na proteção e ficha danificada
-                        </li>
+                        <li>{order.description}</li>
                         <td />
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>Local:</td>
-                        <td>Zambujal</td>
+                        <td>{order.location.name}</td>
                       </tr>
                       <tr>
                         <td>Frente:</td>
-                        <td>LSGRAM 01</td>
+                        <td>{order.front}</td>
                       </tr>
                     </tbody>
                   </table>

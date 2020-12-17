@@ -40,31 +40,45 @@ export const Schedule = styled.div`
       margin: 0 8px;
     }
   }
+  > strong {
+    margin-top: 120px;
+    color: #333;
+    font-size: 20px;
+    line-height: 10px;
+    display: block;
+
+    border-bottom: 3px solid #fff;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  > p {
+    color: #333;
+  }
 `;
 
 export const NextOrder = styled.aside`
-  margin: 64px auto;
-  display: flex;
-  margin-top: 64px;
+  position: absolute;
+  margin-left: 10px;
+  max-width: 54pc;
+
+  span {
+
+      display: flex;
+      position: absolute;
+
+    svg {
+      color: #00ff22;
+      margin-right: 10px;
+      width: 30px;
+      height: 30px;
+    }
+
+  }
 
   table {
-  //border-collapse: collapse;
   margin-top: 35px;
-  margin-left: 90px;
+  margin-left: 140px;
   position: absolute;
-  span {
-      margin-left: 60px;
-      display: flex;
-      align-items: center;
-      color: #fff;
-
-      svg {
-        color: #00ff22;
-        margin-right: 10px;
-        width: 20px;
-        height: 20px;
-      }
-    }
     thead {
     border-collapse: collapse;
     border: 1px solid #00ff22;
@@ -110,21 +124,26 @@ export const NextOrder = styled.aside`
     }
 
     span {
-      margin-left: 130px;
+      margin-left: 150px;
       display: flex;
       align-items: center;
       color: #fff;
+      position: relative;
 
     svg {
       color: #00ff22;
-      margin-right: 10px;
+      margin-left: 100px;
+      width: 20px;
+      height: 20px;
     }
 
   }
 `;
 
 export const Section = styled.div`
-  margin-top: 300px;
+  margin-top: 10px;
+  position: initial;
+
   table {
     //border-collapse: collapse;
     margin-top: 0.1px;
@@ -150,6 +169,7 @@ export const Section = styled.div`
     }
   }
   > strong {
+    margin-top: 180px;
     color: #333;
     font-size: 20px;
     line-height: 30px;
