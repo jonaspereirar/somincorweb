@@ -1,8 +1,13 @@
 import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
-// import signInBackground from '../../../assets/sign-in-background.jpg';
-import signInBackground from '../../../assets/miners.jpg';
+// import signInBackground from '../../../assets/miners.jpg';
+
+import miners from '../../../assets/miners.jpg';
+import dashboardWall from '../../../assets/dashboardWall.jpg';
+import somincor from '../../../assets/somincor.jpg';
+import palha from '../../../assets/palha.jpg';
+import fundoMine from '../../../assets/fundoMine.jpg';
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -135,8 +140,34 @@ export const AnimationContainer = styled.div`
   }
 `;
 
+const animate = keyframes`
+  0%{
+    background-image: url(${miners});
+  }  20%{
+    background-image: url(${dashboardWall});
+  }  40%{
+    background-image: url(${somincor});
+  }  60%{
+    background-image: url(${miners});
+  }  80%{
+    background-image: url(${palha});
+  }  100%{
+    background-image: url(${fundoMine});
+  }
+
+`;
+
 export const Background = styled.div`
   flex: 1;
-  background: url(${signInBackground});
+  animation: ${animate} 10s;
+
   background-size: cover;
+  transition: 10s;
+
+  animation-direction: alternate-reverse;
+  animation-duration: 30s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
 `;
