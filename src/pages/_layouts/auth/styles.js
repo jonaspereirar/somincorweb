@@ -5,7 +5,7 @@ import { shade } from 'polished';
 
 import miners from '../../../assets/miners.jpg';
 import dashboardWall from '../../../assets/dashboardWall.jpg';
-import somincor from '../../../assets/somincor.jpg';
+// import somincor from '../../../assets/somincor.jpg';
 import palha from '../../../assets/palha.jpg';
 import fundoMine from '../../../assets/fundoMine.jpg';
 
@@ -146,7 +146,7 @@ const animate = keyframes`
   }  20%{
     background-image: url(${dashboardWall});
   }  40%{
-    background-image: url(${somincor});
+    background-image: url(${palha});
   }  60%{
     background-image: url(${miners});
   }  80%{
@@ -159,13 +159,13 @@ const animate = keyframes`
 
 export const Background = styled.div`
   flex: 1;
-  animation: ${animate} 10s;
+  animation: ${animate} 80s;
 
   background-size: cover;
-  transition: 10s;
+  transition: 40s;
 
-  animation-direction: alternate-reverse;
-  animation-duration: 30s;
+  /* animation-direction: alternate-reverse; */
+  animation-duration: 80s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-play-state: running;
