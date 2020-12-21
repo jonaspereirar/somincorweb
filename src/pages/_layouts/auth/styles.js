@@ -4,8 +4,9 @@ import { shade } from 'polished';
 // import signInBackground from '../../../assets/miners.jpg';
 
 import miners from '../../../assets/miners.jpg';
+import miners2 from '../../../assets/miners2.jpg';
 import dashboardWall from '../../../assets/dashboardWall.jpg';
-import somincor from '../../../assets/somincor.jpg';
+import Insdustrial from '../../../assets/Insdustrial.jpg';
 import palha from '../../../assets/palha.jpg';
 import fundoMine from '../../../assets/fundoMine.jpg';
 
@@ -59,7 +60,7 @@ export const AnimationContainer = styled.div`
     margin-top: 30px;
 
     input {
-      background: transparent;
+      background: rgba(0, 0, 0, 0.1);
       border: 0;
       border-radius: 10px;
       height: 44px;
@@ -146,9 +147,9 @@ const animate = keyframes`
   }  20%{
     background-image: url(${dashboardWall});
   }  40%{
-    background-image: url(${somincor});
+    background-image: url(${Insdustrial});
   }  60%{
-    background-image: url(${miners});
+    background-image: url(${miners2});
   }  80%{
     background-image: url(${palha});
   }  100%{
@@ -159,13 +160,12 @@ const animate = keyframes`
 
 export const Background = styled.div`
   flex: 1;
-  animation: ${animate} 10s;
+  animation: ${animate} 190s;
 
   background-size: cover;
-  transition: 10s;
 
   animation-direction: alternate-reverse;
-  animation-duration: 30s;
+  animation-duration: 190s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-play-state: running;
