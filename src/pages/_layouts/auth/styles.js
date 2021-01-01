@@ -32,7 +32,7 @@ export const Content = styled.div`
   text-align: center;
 
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
 `;
 
 const appearFromRight = keyframes`
@@ -124,7 +124,6 @@ export const AnimationContainer = styled.div`
 
   > a {
     color: #ff9000;
-    margin-top: 24px;
     text-decoration: none;
     transition: color 0.2s;
 
@@ -156,9 +155,11 @@ const animate = keyframes`
     background-image: url(${fundoMine});
   }
 
+
 `;
 
 export const Background = styled.div`
+  margin-top: -20px;
   flex: 1;
   animation: ${animate} 190s;
 

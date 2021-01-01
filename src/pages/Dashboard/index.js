@@ -101,7 +101,7 @@ export default function Dashboard() {
   const nextOrder = useMemo(() => {
     return orders.find((order) => isAfter(parseISO(order.date), new Date()));
   }, [orders]);
-
+  console.tron.log(orders);
   return (
     <Container>
       <Content>
